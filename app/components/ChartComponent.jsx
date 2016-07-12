@@ -24,7 +24,7 @@ export default class ChartComponent extends Component {
           type:    this.props.type,
           options: this.props.options,
           data:    {
-            labels:   Object.keys( this.props.data ),
+            labels:   this.props.labels || Object.keys( this.props.data ),
             datasets: [
               {
                 data: this.props.data
@@ -41,8 +41,9 @@ export default class ChartComponent extends Component {
     this.state.mounted = true;
   }
 
-  // componentDidUpdate ( ) {
-  // }
+  componentDidUpdate ( ) {
+    this.chart.update();
+  }
 
   componentWillReceiveProps ( ) {
     this._timer = setTimeout( ( ) => {
@@ -52,6 +53,7 @@ export default class ChartComponent extends Component {
 
   componentWillUnmount ( ) {
     clearTimeout( this._timer );
+    this.chart.destroy();
     this.state.mounted = false;
   }
 
@@ -62,6 +64,7 @@ export default class ChartComponent extends Component {
 
 ChartComponent.propTypes = {
   type:    PropTypes.string,
+  labels:  PropTypes.array,
   data:    PropTypes.object,
   options: PropTypes.object
 };

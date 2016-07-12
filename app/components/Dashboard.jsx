@@ -5,7 +5,7 @@ export default Dashboard = ( { data, options } ) => (
   <main is="dashboard">
     {data}
       { data.articles.hits.map( article =>
-        <ChartComponent key={article._id} type="bar" data={article} options={options} />
+        <ChartComponent key={article._id} type="bar" labels={labels} data={article} options={options} />
       ) }
   </main>
 );
