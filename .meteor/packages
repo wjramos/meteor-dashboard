@@ -34,9 +34,10 @@ check
 # insecure                # Allow all DB writes from clients (for prototyping)
 
 kadira:flow-router-ssr
-meteorhacks:fast-render
+#meteorhacks:fast-render
 
-aldeed:collection2
+#aldeed:collection2
 # meteorhacks:subs-manager
 
 # kadira:dochead
+reactrouter:react-router-ssr
